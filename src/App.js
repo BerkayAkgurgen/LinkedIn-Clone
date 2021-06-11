@@ -1,10 +1,11 @@
 import React from "react";
-import "./App.css";
+import Header from "./components/header/Header";
+import "./styles/App.scss";
 
 function App() {
   return (
     <div className="app">
-      <h1>Lets build a LinkedIn Clone</h1>
+      <Header />
     </div>
   );
 }
