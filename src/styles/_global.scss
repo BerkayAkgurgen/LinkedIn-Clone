@@ -7,12 +7,12 @@
 }
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f3f2ef;
 }
 
 code {
@@ -20,8 +20,8 @@ code {
     monospace;
 }
 
-@media screen and (max-width:786px) {
-  .app {
-  display: none;
-  }
+.app__body {
+  display: flex;
+  max-width: 1128px;
+  margin: 0 auto;
 }
