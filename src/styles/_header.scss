@@ -1,12 +1,11 @@
 .header {
-  position: sticky;
-  left: 0;
-  right: 0;
-  top: 0;
-  border-bottom: 0.1px solid lightgray;
+  position: fixed;
+  top: 0px;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.08);
   width: 100vw;
-  z-index: 999;
-  padding: 5px 0;
+  z-index: 9999999 !important;
+  padding: 7px 0;
+  background-color: white;
 
   .container {
     display: flex;
@@ -24,8 +23,6 @@
     align-items: center;
   }
 
-
-
   &__left {
     display: flex;
     align-items: center;
@@ -33,6 +30,11 @@
     img {
       object-fit: cover;
       margin-right: 10px;
+    }
+
+    ::placeholder {
+      font-weight: 400;
+      font-size: 15px;
     }
 
     .header__search {
@@ -44,10 +46,17 @@
       color: $main-gray;
       background-color: #eef3f8;
 
+      svg {
+        font-size: 19px;
+        margin-left: 5px;
+      }
+
       input {
+        padding-left: 5px;
         outline: none;
         border: none;
         background: none;
+        width: 235px;
       }
     }
   }

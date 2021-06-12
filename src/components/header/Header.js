@@ -22,14 +22,17 @@ const Header = () => {
             <input type="text" placeholder="Search" />
           </div>
         </div>
-        <div className="header__right">
+        <nav className="header__right">
           <HeaderOption Icon={HomeIcon} title="Home" />
           <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
           <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
           <HeaderOption Icon={ChatIcon} title="Messaging" />
           <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-          <HeaderOption avatar="https://media-exp1.licdn.com/dms/image/C4E03AQEW7Q3xbjXniA/profile-displayphoto-shrink_400_400/0/1619898269205?e=1628726400&v=beta&t=NK_g6mYtsq_T7D9fmGDuzFMqjKTlppZF8BYjrPCuTr0"  title="Me"/>
-        </div>
+          <HeaderOption
+            avatar="https://media-exp1.licdn.com/dms/image/C4E03AQEW7Q3xbjXniA/profile-displayphoto-shrink_400_400/0/1619898269205?e=1628726400&v=beta&t=NK_g6mYtsq_T7D9fmGDuzFMqjKTlppZF8BYjrPCuTr0"
+            title="Me"
+          />
+        </nav>
       </div>
     </div>
   );
