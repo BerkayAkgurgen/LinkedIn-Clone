@@ -1,15 +1,17 @@
 .sidebar {
     padding-top: 53px;
-    position: sticky;
     flex: 0.2;
     border-radius: 10px;
     text-align: center;
-    height: fit-content;
     margin-left: -5px;
+    height: min-content;
+    position: sticky;
+    top: 0;
+
 
     &-avatar {
         margin: 0 auto;
-        margin-bottom:20px;
+        margin-bottom: 20px;
         width: 72px !important;
         height: 72px !important;
         position: relative;
@@ -82,7 +84,6 @@
         background-color: white;
         border-radius: 10px;
         margin-top: 10px;
-
         p {
             font-size: 13px;
             padding-bottom: 10px;

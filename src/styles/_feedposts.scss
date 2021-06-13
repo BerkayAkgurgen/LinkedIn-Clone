@@ -1,0 +1,46 @@
+.post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+
+    &__header {
+        display: flex;
+        margin-bottom: 10px;
+
+        .post__info {
+            margin-left: 10px;
+
+            h2 {
+                font-size: 15px;
+            }
+
+            p {
+                color: gray;
+                font-size: 12px;
+            }
+        }
+    }
+
+    &__body {
+        overflow-wrap: anywhere;
+    }
+
+    &__buttons {
+        display: flex;
+        border-top: 1px solid lightgray;
+        margin-top: 5px;
+        padding-top: 2px;
+        .input__option:nth-child(4){
+            svg{
+                transform: rotate(-35deg);
+                margin-right: -3px;
+            }
+        }
+        .input__option:nth-child(1){
+            svg{
+                transform: rotateY(180deg);
+            }
+        }
+    }
+}

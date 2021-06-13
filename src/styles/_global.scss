@@ -25,3 +25,29 @@ code {
   max-width: 1128px;
   margin: 0 auto;
 }
+
+.input__option {
+  padding: 10px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.2;
+
+  svg {
+    vertical-align: middle;
+  }
+
+  h4 {
+    display: inline-block;
+    vertical-align: middle;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
