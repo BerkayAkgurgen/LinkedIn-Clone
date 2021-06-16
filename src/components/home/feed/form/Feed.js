@@ -8,8 +8,12 @@ import InputOptions from "./InputOptions";
 import Post from "../posts/Post";
 import { db } from "../../../../firebase/firebase";
 import firebase from "firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../../features/userSlice";
+import FlipMove from "react-flip-move";
 
 function Feed() {
+  const user = useSelector(selectUser);
   const [posts, setPosts] = useState([]);
   const [inputText, setInputText] = useState("");
 
@@ -29,10 +33,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Berkay Akgürgen",
-      description: "This is a test.",
+      name: user?.displayName,
+      description: "Lorem İpsum",
       message: inputText.trim(),
-      photoUrl: "",
+      photoUrl: user?.photoUrl,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 
@@ -42,10 +46,7 @@ function Feed() {
   return (
     <div className="feed">
       <div className="feed__input-container">
-        <Avatar
-          className="feed__avatar"
-          src="https://media-exp1.licdn.com/dms/image/C4E03AQEW7Q3xbjXniA/profile-displayphoto-shrink_100_100/0/1619898269205?e=1628726400&v=beta&t=FWxqya9uiYPnOSK0AWcuQpdvdHNYefUZLvKOd-WbXfk"
-        />
+        <Avatar className="feed__avatar" src={user?.photoUrl} />
         <div className="feed__input">
           <form>
             <input
@@ -74,17 +75,20 @@ function Feed() {
           />
         </div>
       </div>
+      <FlipMove>
       {posts.map(({ id, data: { name, description, message, photoUrl } }) => {
         return (
           <Post
-            name={name}
-            description={description}
-            message={message}
-            photoUrl={photoUrl}
-            key={id}
+          name={name}
+          description={description}
+          message={message}
+          photoUrl={photoUrl}
+          id={id}
+          key={id}
           />
-        );
-      })}
+          );
+        })}
+        </FlipMove>
     </div>
   );
 }

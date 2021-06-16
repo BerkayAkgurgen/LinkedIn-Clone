@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import DropDown from "./DropDown";
 import SearchIcon from "@material-ui/icons/Search";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import HomeIcon from "@material-ui/icons/Home";
@@ -6,17 +7,23 @@ import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import ChatIcon from "@material-ui/icons/Chat";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import HeaderOption from "./HeaderOption";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 const Header = () => {
+  const user = useSelector(selectUser);
+  const [toggle, setToggle] = useState(false);
   return (
     <div className="header">
       <div className="container flex">
         <div className="header__left">
-          <img
-            src="https://image.flaticon.com/icons/png/512/174/174857.png"
-            alt="LinkedIn Logo"
-            height="34"
-          />
+          <a href="/">
+            <img
+              src="https://image.flaticon.com/icons/png/512/174/174857.png"
+              alt="LinkedIn Logo"
+              height="34"
+            />
+          </a>
           <div className="header__search">
             <SearchIcon />
             <input type="text" placeholder="Search" />
@@ -29,9 +36,12 @@ const Header = () => {
           <HeaderOption Icon={ChatIcon} title="Messaging" />
           <HeaderOption Icon={NotificationsIcon} title="Notifications" />
           <HeaderOption
-            avatar="https://media-exp1.licdn.com/dms/image/C4E03AQEW7Q3xbjXniA/profile-displayphoto-shrink_400_400/0/1619898269205?e=1628726400&v=beta&t=NK_g6mYtsq_T7D9fmGDuzFMqjKTlppZF8BYjrPCuTr0"
+            avatar={user?.photoUrl}
             title="Me"
+            status={toggle}
+            changeStatus={setToggle}
           />
+          <DropDown status={toggle} />
         </nav>
       </div>
     </div>

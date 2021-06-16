@@ -1,7 +1,11 @@
 import React from "react";
+import { selectUser } from "../../../features/userSlice";
 import { Avatar } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 function SideBar() {
+  const user = useSelector(selectUser);
+
   const recentItem = (topic) => {
     return (
       <div className="sidebar__recent-item">
@@ -15,19 +19,13 @@ function SideBar() {
     <aside className="sidebar">
       <div className="sidebar__top">
         <img
-          src="https://media-exp1.licdn.com/dms/image/C4E16AQEgm88VDBflmA/profile-displaybackgroundimage-shrink_200_800/0/1619898337287?e=1628726400&v=beta&t=BzSW1n7t7n3dXLvIzCQdFZSo75NYSwSTr1p2ZU01ZBM"
+          src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80"
           alt="Avatar Background"
           className="sidebar__top-background"
         />
-        <Avatar
-          className="sidebar-avatar"
-          src="https://media-exp1.licdn.com/dms/image/C4E03AQEW7Q3xbjXniA/profile-displayphoto-shrink_100_100/0/1619898269205?e=1628726400&v=beta&t=FWxqya9uiYPnOSK0AWcuQpdvdHNYefUZLvKOd-WbXfk"
-        />
-        <h2>Berkay Akgürgen</h2>
-        <h4>
-          İstanbul Aydın Üniversitesi | Eskişehir Anadolu Üniversitesi |
-          Front-End Developer
-        </h4>
+        <Avatar className="sidebar-avatar" src={user?.photoUrl} />
+        <h2>{user?.displayName}</h2>
+        <h4>{user?.email}</h4>
       </div>
       <div className="sidebar__stats">
         <div className="sidebar__stat">

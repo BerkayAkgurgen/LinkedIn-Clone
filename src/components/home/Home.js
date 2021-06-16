@@ -4,9 +4,11 @@ import Feed from "./feed/form/Feed";
 
 function Home() {
   return (
-    <div className="app__body">
-      <Sidebar />
-      <Feed />
+    <div className="bgh">
+      <div className="app__body">
+        <Sidebar />
+        <Feed />
+      </div>
     </div>
   );
 }
