@@ -1,11 +1,12 @@
 .login {
-    display: grid;
-    place-items: center;
-    margin: 0 auto;
-    padding-top: 156px;
-    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: white;
-    height: 100vh;
+    height: 90vh;
+    overflow: hidden;
+
 
     &__section {
         background-color: white;
@@ -37,6 +38,7 @@
 
             a {
                 text-decoration: none;
+
                 &:hover {
                     transition: 0.2s;
                     text-decoration: underline;
@@ -82,7 +84,6 @@
     img {
         object-fit: contain;
         margin: 20px 0;
-        transform: translate(-140px, -15px);
     }
 
 }

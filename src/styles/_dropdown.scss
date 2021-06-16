@@ -12,6 +12,7 @@
     padding: 10px 8px;
     padding-bottom: 0 !important;
     opacity: 0;
+    visibility: hidden;
 
 
     &__top {
@@ -160,6 +161,7 @@
 .dropdown.dropdown-active {
     display: block;
     opacity: 1 !important;
+    visibility: visible;
 }
 
 .dropdown.pasif {
