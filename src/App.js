@@ -29,18 +29,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      if (userAuth && isMounted) {
+      if (userAuth) {
         dispatch(
           login({
             email: userAuth.email,
             uid: userAuth.uid,
-            displayName: userAuth.displayName,
-            photoUrl: userAuth.photoURL,
+            displayName: userAuth.displayName
+              ? userAuth.displayName
+              : user.displayName,
+            photoUrl: userAuth.photoURL ? userAuth.photoURL : user.photoURL,
           })
         );
-      } else if (!userAuth && isMounted) {
+      } else if (!userAuth) {
         dispatch(logout());
       }
     });

@@ -23,6 +23,7 @@ function Login() {
           displayName: name,
           photoURL: picture,
         });
+        console.log("Here Register");
         dispatch(
           login({
             email: userAuth.user.email,

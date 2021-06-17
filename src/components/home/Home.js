@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./sidebar/SideBar";
+import WidgetBar from "./sidebar/WidgetBar";
 import Feed from "./feed/form/Feed";
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
       <div className="app__body">
         <Sidebar />
         <Feed />
+        <WidgetBar/>
       </div>
     </div>
   );
