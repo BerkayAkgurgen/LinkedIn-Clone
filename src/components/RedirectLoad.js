@@ -4,6 +4,7 @@ function RedirectLoad() {
   return (
     <div className="redirect">
       <img
+        loading="lazy"
         src="https://brandlogos.net/wp-content/uploads/2020/11/linkedin-logo-512x512.png"
         alt="LikedIn Logo"
         className="redirect__logo"

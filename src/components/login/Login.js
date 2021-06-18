@@ -29,6 +29,7 @@ function Login() {
   return (
     <div className="login">
       <img
+      loading="lazy"
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/LinkedIn_Logo_2013.svg/1280px-LinkedIn_Logo_2013.svg.png"
         alt="LinkedIn Logo"
         width="110"

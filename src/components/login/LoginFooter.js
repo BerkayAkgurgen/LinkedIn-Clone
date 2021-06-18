@@ -6,6 +6,7 @@ function LoginFooter() {
     <footer className="footer">
       <div className="footer__icon">
         <img
+        loading="lazy"
           width="56"
           src="https://brandlogos.net/wp-content/uploads/2020/11/linkedin-logo-512x512.png"
           alt="LinkedIn Icon"

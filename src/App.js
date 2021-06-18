@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,17 +6,20 @@ import {
   Redirect,
 } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "./components/header/Header";
 import { selectUser } from "./features/userSlice";
 import "./styles/App.scss";
 import { login, logout } from "./features/userSlice";
-import Login from "./components/login/Login";
-import Register from "./components/login/Register";
-import LoginFooter from "./components/login/LoginFooter";
-import Home from "./components/home/Home";
-import FixedOptions from "./components/fixedbar/FixedOptions";
-import RedirectLoad from "./components/RedirectLoad";
 import { auth } from "./firebase/firebase";
+
+const Header = React.lazy(() => import("./components/header/Header"));
+const RedirectLoad = React.lazy(() => import("./components/RedirectLoad"));
+const FixedOptions = React.lazy(() =>
+  import("./components/fixedbar/FixedOptions")
+);
+const Home = React.lazy(() => import("./components/home/Home"));
+const LoginFooter = React.lazy(() => import("./components/login/LoginFooter"));
+const Register = React.lazy(() => import("./components/login/Register"));
+const Login = React.lazy(() => import("./components/login/Login"));
 
 function App() {
   const user = useSelector(selectUser);
@@ -33,7 +36,7 @@ function App() {
   useEffect(() => {
     if (window.innerWidth <= 830) {
       setWidth(true);
-    } 
+    }
     const handleResize = () => {
       if (window.innerWidth > 830) {
         setWidth(false);
@@ -71,23 +74,41 @@ function App() {
     <Router basename="/">
       <div className="app">
         {preLoad ? (
-          <RedirectLoad />
+          <Suspense fallback={null}>
+            <RedirectLoad />
+          </Suspense>
         ) : (
           <Switch>
             <Route exact path="/login">
-              <Login />
-              <LoginFooter />
+              <Suspense fallback={null}>
+                <Login />
+              </Suspense>
+              <Suspense fallback={null}>
+                <LoginFooter />
+              </Suspense>
               <Redirect from="/login" to={!user ? "/login" : "/home"} />
             </Route>
             <Route exact path="/home">
-              <Header />
-              <Home />
-              {width && <FixedOptions />}
+              <Suspense fallback={null}>
+                <Header />
+              </Suspense>
+              <Suspense fallback={null}>
+                <Home />
+              </Suspense>
+              {width && (
+                <Suspense fallback={null}>
+                  <FixedOptions />
+                </Suspense>
+              )}
               <Redirect from="/home" to={!user ? "/login" : "/home"} />
             </Route>
             <Route exact path="/register">
-              <Register />
-              <LoginFooter />
+              <Suspense fallback={null}>
+                <Register />
+              </Suspense>
+              <Suspense fallback={null}>
+                <LoginFooter />
+              </Suspense>
               <Redirect from="/register" to={!user ? "/register" : "/home"} />
             </Route>
             <Route>
