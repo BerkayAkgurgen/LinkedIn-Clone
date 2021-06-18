@@ -6,8 +6,8 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import InputOptions from "./InputOptions";
 import Post from "../posts/Post";
+import firebase from 'firebase/app';
 import { db } from "../../../../firebase/firebase";
-import firebase from "firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../../features/userSlice";
 import FlipMove from "react-flip-move";
@@ -31,7 +31,6 @@ function Feed() {
 
   const sendPost = (e) => {
     e.preventDefault();
-
     db.collection("posts").add({
       name: user?.displayName,
       description: "Lorem İpsum",

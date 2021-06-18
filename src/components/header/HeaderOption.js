@@ -14,9 +14,16 @@ const HeaderOption = ({ avatar, title, Icon, status, changeStatus }) => {
       {Icon && <Icon className="header__option-icon" />}
       {avatar && (
         <Avatar
-          className={status ? "header__option-icon avatar anim" : "header__option-icon avatar"}
+          className={
+            status
+              ? "header__option-icon avatar anim"
+              : "header__option-icon avatar"
+          }
           src={avatar}
         />
+      )}
+      {avatar === undefined && title==='Me' && (
+        <Avatar className="def-avatar"/>
       )}
       {title === "Me" ? (
         <div className="header__option-dropdown">

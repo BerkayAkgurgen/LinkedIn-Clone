@@ -30,24 +30,23 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
-      if (userAuth) {
+      if (userAuth?.displayName) {
         dispatch(
           login({
             email: userAuth.email,
             uid: userAuth.uid,
-            displayName: userAuth.displayName
-              ? userAuth.displayName
-              : user.displayName,
-            photoUrl: userAuth.photoURL ? userAuth.photoURL : user.photoURL,
+            displayName: userAuth.displayName,
+            photoUrl: userAuth.photoURL,
           })
         );
       } else if (!userAuth) {
         dispatch(logout());
       }
     });
-
-    return unsubscribe;
-  }, []);
+    return () => {
+      unsubscribe();
+    };
+  }, [dispatch]);
 
   return (
     <Router basename="/">
@@ -68,7 +67,7 @@ function App() {
             </Route>
             <Route exact path="/register">
               <Register />
-              <LoginFooter />
+              {/* <LoginFooter /> */}
               <Redirect from="/register" to={!user ? "/register" : "/home"} />
             </Route>
             <Route>

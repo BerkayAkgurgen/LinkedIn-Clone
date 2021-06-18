@@ -22,7 +22,6 @@ const Post = forwardRef(({ id, name, description, message, photoUrl }, ref) => {
       alert("This post is not of you.");
     }
   };
-
   return (
     <div ref={ref} className="post">
       <div

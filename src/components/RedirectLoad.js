@@ -5,6 +5,7 @@ function RedirectLoad() {
     <div className="redirect">
       <img
         src="https://brandlogos.net/wp-content/uploads/2020/11/linkedin-logo-512x512.png"
+        alt="LikedIn Logo"
         className="redirect__logo"
       />
       <div className="progress-bar">

@@ -14,6 +14,7 @@ function Login() {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userAuth) => {
+        console.log("Login: ",userAuth.user.displayName);
         dispatch(
           login({
             email: userAuth.user.email,
