@@ -14,6 +14,10 @@
         padding: 24px 32px 32px;
         border-radius: 8px;
 
+        @include breakpoint(xsmedium) {
+            box-shadow: none;
+        }
+
         &-paragraph {
             margin-bottom: 24px;
 
@@ -23,18 +27,35 @@
                 color: rgba(0, 0, 0, 0.9);
                 padding-bottom: 4px;
                 line-height: 1.25;
+
+                @include breakpoint(xxsmall) {
+                    font-size: 25px;
+                    padding: 0 10px !important;
+
+                }
             }
 
             p {
                 font-size: 14px;
                 line-height: 1.5;
                 color: rgba(0, 0, 0, 0.9);
+
+                @include breakpoint(xxsmall) {
+                    font-size: 12px;
+                    padding: 0 10px !important;
+
+                }
             }
         }
 
         form {
             display: flex;
             flex-direction: column;
+
+            @include breakpoint(xxsmall) {
+                width: 100vw !important;
+                padding: 0 10px !important;
+            }
 
             a {
                 text-decoration: none;
@@ -54,6 +75,10 @@
                 border-radius: 8px;
                 outline: none;
                 border: 1px solid black;
+
+                @include breakpoint(xxsmall) {
+                    width: 100% !important;
+                }
             }
 
             button {
@@ -67,6 +92,10 @@
                 outline: none;
                 margin-top: 10px;
                 cursor: pointer;
+
+                @include breakpoint(xxsmall) {
+                    width: 100% !important;
+                }
 
                 &:hover {
                     background-color: #004182 !important;
@@ -84,6 +113,18 @@
     img {
         object-fit: contain;
         margin: 20px 0;
+        transform: translateX(-130px);
+        
+        @include breakpoint(xsmedium) {
+            margin-left: 15px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            margin-top: 5px;
+        }
+        @include breakpoint(xxsmall) {
+            transform: none;
+        }
+
     }
 
 }

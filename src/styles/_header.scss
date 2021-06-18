@@ -57,6 +57,15 @@
         border: none;
         background: none;
         width: 235px;
+        @include breakpoint(xsmedium) {
+          width: 290px;
+        }
+        @include breakpoint(headersmall) {
+          width: 200px;
+        }
+        @include breakpoint(xxsmall) {
+          width: 150px;
+        }
       }
     }
   }
@@ -67,6 +76,9 @@
 
     .header__option:not(:last-child) {
       margin-right: 20px;
+      @include breakpoint(headersmall) {
+       margin: 0;
+      }
     }
 
     .header__option {
@@ -77,6 +89,21 @@
       color: rgba(0, 0, 0, 0.6);
       cursor: pointer;
       min-width: 52px;
+
+      &:nth-child(6) {
+        @include breakpoint(xsmedium) {
+          display: flex !important;
+        }
+      }
+
+      @include breakpoint(xsmedium) {
+        display: none;
+      }
+
+      .def-avatar {
+        width: 24px !important;
+        height: 24px !important;
+      }
 
       &:hover {
         color: #000000;

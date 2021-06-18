@@ -12,14 +12,16 @@ import "./styles/App.scss";
 import { login, logout } from "./features/userSlice";
 import Login from "./components/login/Login";
 import Register from "./components/login/Register";
-import Home from "./components/home/Home";
 import LoginFooter from "./components/login/LoginFooter";
+import Home from "./components/home/Home";
+import FixedOptions from "./components/fixedbar/FixedOptions";
 import RedirectLoad from "./components/RedirectLoad";
 import { auth } from "./firebase/firebase";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const [width, setWidth] = useState(false);
   const [preLoad, setPreLoad] = useState(true);
 
   useEffect(() => {
@@ -27,6 +29,23 @@ function App() {
       setPreLoad(false);
     }, 800);
   }, []);
+
+  useEffect(() => {
+    if (window.innerWidth <= 830) {
+      setWidth(true);
+    } 
+    const handleResize = () => {
+      if (window.innerWidth > 830) {
+        setWidth(false);
+      } else {
+        setWidth(true);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((userAuth) => {
@@ -63,11 +82,12 @@ function App() {
             <Route exact path="/home">
               <Header />
               <Home />
+              {width && <FixedOptions />}
               <Redirect from="/home" to={!user ? "/login" : "/home"} />
             </Route>
             <Route exact path="/register">
               <Register />
-              {/* <LoginFooter /> */}
+              <LoginFooter />
               <Redirect from="/register" to={!user ? "/register" : "/home"} />
             </Route>
             <Route>

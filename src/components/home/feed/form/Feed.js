@@ -33,10 +33,12 @@ function Feed() {
     e.preventDefault();
     db.collection("posts").add({
       name: user?.displayName,
-      description: "Lorem İpsum",
+      description: "Demo Account",
       message: inputText.trim(),
       photoUrl: user?.photoUrl,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      like:0,
+      likedUsers: []
     });
 
     setInputText("");
@@ -75,7 +77,7 @@ function Feed() {
         </div>
       </div>
       <FlipMove>
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => {
+      {posts.map(({ id, data: { name, description, message, photoUrl,like } }) => {
         return (
           <Post
           name={name}
@@ -84,6 +86,7 @@ function Feed() {
           photoUrl={photoUrl}
           id={id}
           key={id}
+          like={like}
           />
           );
         })}

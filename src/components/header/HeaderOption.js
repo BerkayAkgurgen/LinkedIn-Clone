@@ -22,9 +22,10 @@ const HeaderOption = ({ avatar, title, Icon, status, changeStatus }) => {
           src={avatar}
         />
       )}
-      {avatar === undefined && title==='Me' && (
-        <Avatar className="def-avatar"/>
+      {avatar == undefined && title === "Me" && (
+        <Avatar className="def-avatar" />
       )}
+      {avatar === "" && title === "Me" && <Avatar className="def-avatar" />}
       {title === "Me" ? (
         <div className="header__option-dropdown">
           <h3 className="header__option-title">{title}</h3>

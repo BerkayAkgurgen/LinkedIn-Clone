@@ -13,6 +13,7 @@
     padding-bottom: 0 !important;
     opacity: 0;
     visibility: hidden;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.2);
 
 
     &__top {
@@ -34,6 +35,7 @@
             display: inline-block;
             width: 56px !important;
             height: 56px !important;
+            display: flex;
         }
 
         &-info {

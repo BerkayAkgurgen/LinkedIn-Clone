@@ -14,6 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: block;
   height: auto;
+  overflow-x: hidden;
 }
 
 code {
@@ -24,12 +25,6 @@ code {
 html {
   height: fit-content;
   scroll-behavior: smooth;
-}
-
-.app__body {
-  display: flex;
-  max-width: 1128px;
-  margin: 0 auto;
 }
 
 .bgh {
@@ -69,13 +64,77 @@ body {
   height: 100%;
 }
 
+@function rem($pixels) {
+  @return #{$pixels / 16px}rem;
+}
+
+@mixin breakpoint($point) {
+
+  @if $point==large {
+    @media (max-width: rem(992px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==medium {
+    @media (max-width: rem(780px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==xsmedium {
+    @media (max-width: rem(830px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==small {
+    @media (max-width: rem(585px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==xsmall {
+    @media (max-width: rem(613px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==headersmall {
+    @media (max-width: rem(495px)) {
+      @content ;
+    }
+  }
+
+  @else if $point==xxsmall {
+    @media (max-width: rem(370px)) {
+      @content ;
+    }
+  }
+}
+
 #root {
   .app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
     &__body {
       background-color: #f3f2ef;
+      display: flex;
+      max-width: 1150px;
+      margin: 0 auto;
+
+      @include breakpoint(large) {
+        max-width: unset;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      @include breakpoint(medium) {
+        flex-direction: column;
+        width: 576px;
+      }
     }
   }
 }

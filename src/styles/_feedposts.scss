@@ -58,6 +58,42 @@
 
     &__body {
         overflow-wrap: anywhere;
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        .likes {
+            position: relative;
+            margin-left: 4px;
+
+            &:before {
+                position: absolute;
+                content: '';
+                background-color: #0a66c2;
+                width: 16px !important;
+                height: 16px !important;
+                left: -2.6px;
+                top: 5px;
+                border-radius: 50%;
+            }
+
+            svg {
+                position: relative;
+                transform: rotateY(180deg);
+                width: 10px !important;
+                height: 10px !important;
+                z-index: 16 !important;
+                color: white;
+                margin-right: 5px;
+            }
+
+            span {
+                font-style: normal;
+                font-size: 13px;
+                color: gray;
+            }
+        }
     }
 
     &__buttons {
@@ -66,10 +102,20 @@
         margin-top: 5px;
         padding-top: 2px;
 
+        @include breakpoint(small) {
+            justify-content: space-around;
+        }
+
         .input__option:nth-child(4) {
             svg {
                 transform: rotate(-35deg);
                 margin-right: -3px;
+            }
+        }
+
+        .input__option h4 {
+            @include breakpoint(small) {
+                display: none;
             }
         }
 
@@ -88,4 +134,24 @@
 
 .hide__dots {
     right: 1.3rem !important;
+}
+
+.likes {
+    animation: fadeIn 0.5s ease-in-out;
+    -webkit-animation: fadeIn 0.5s ease-in-out;
+    -moz-animation: fadeIn 0.5s ease-in-out;
+    -o-animation: fadeIn 0.5s ease-in-out;
+    -ms-animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        height: 0;
+    }
+
+    100% {
+        height: 100%;
+        opacity: 1;
+    }
 }

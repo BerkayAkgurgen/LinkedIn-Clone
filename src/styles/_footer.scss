@@ -5,7 +5,10 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
+    @include breakpoint(xsmedium) {
+        display: none;
+    }
+    
     &__icon {
         display: flex;
         align-items: center;
